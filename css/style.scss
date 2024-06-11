@@ -1,0 +1,479 @@
+// font-family: "Poppins", sans-serif;
+* {
+    padding: 0;
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+$white: #fff;
+$dark: #000000;
+$light-theme: (primary-color: #83B4FF,
+    secondary-color: #8DECB4,
+    // secondary-color: #5A72A0,
+    // FFAA80
+);
+
+$dark-theme: (primary-color: #cdcaff,
+    secondary-color: #2217ec,
+);
+
+@mixin theme-variable($theme){
+    --primary-color: #{map-get($theme, primary-color)};
+    --secondary-color: #{map-get($theme, secondary-color)};
+}
+:root {
+    @include theme-variable($light-theme);
+}
+@mixin flex($justify: center) {
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+}
+
+@mixin button($radius: 5px, $back: var(--primary-color), $col: $white) {
+    font-size: 20px;
+    padding: 15px 20px;
+    color: $col;
+    border-radius: $radius;
+    transition: all 0.3s ease-in-out;
+    background-color: $back;
+    border: solid 2px $back;
+    display: inline-block;
+    min-width: 200px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+@mixin psuedo($back: var(--primary-color)) {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $back;
+    display: block;
+}
+
+
+body {
+    font-size: 20px;
+    line-height: 1.5;
+    font-family: "Poppins", sans-serif;
+    color: $dark;
+}
+
+*::selection {
+    background-color: var(--secondary-color);
+    color: $white;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 30px;
+}
+
+h1,
+.h1 {
+    font-size: 68px;
+}
+
+h2,
+.h2 {
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h3,
+.h3 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h4,
+.h4 {
+    font-size: 30px;
+}
+
+h5,
+.h5 {
+    font-size: 25px;
+}
+
+del {
+    margin-right: 30px;
+}
+
+input,
+select,
+textarea {
+    padding: 8px 15px;
+    min-width: 50px;
+    border: none;
+    background: transparent;
+
+    &::placeholder {
+        color: $white;
+        opacity: 1;
+    }
+
+    &:focus {
+        outline: none;
+    }
+}
+
+form {
+    background-color: var(--primary-color);
+    color: $white;
+}
+
+input[type="submit"] {
+    background-color: var(--secondary-color);
+    color: $white;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        background-color: $white;
+        color: var(--secondary-color);
+    }
+}
+
+.topForm {
+    max-width: 250px;
+    display: flex;
+}
+
+.bottomForm {
+    // max-width: 250px;
+    display: flex;
+    margin-bottom: 30px;
+
+    input {
+        padding: 15px;
+    }
+
+    input[type="submit"] {
+        width: 80px;
+    }
+}
+
+.head-para {
+    font-size: 25px;
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.panel {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+.whiteText {
+    color: $white;
+}
+
+.yellowBack {
+    background-color: var(--primary-color);
+}
+
+.green {
+    color: var(--secondary-color);
+}
+
+.custBtn {
+    color: var(--secondary-color);
+    position: relative;
+    padding-right: 25px;
+    transition: all 0.3s ease-in-out;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 7px;
+        display: block;
+        width: 2px;
+        height: 14px;
+        background-color: var(--secondary-color);
+        transform: translateY(-50%);
+        transition: all 0.3s ease-in-out;
+    }
+
+    &::after {
+        transform: translateY(-50%) rotate(90deg);
+    }
+
+    &:hover {
+        background-color: var(--secondary-color);
+        color: $white;
+        padding-top: 10px;
+        padding-left: 10px;
+        padding-bottom: 10px;
+        &::before,
+        &::after {
+            top: 0;
+            right: 0;
+            width: 100%;
+            background: transparent;
+            border-top: solid 2px var(--secondary-color);
+            border-right: solid 2px var(--secondary-color);
+            transform: none;
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
+
+.btn {
+    @include button();
+
+    &:hover {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+    }
+}
+
+.green-btn {
+    @include button(30px, var(--secondary-color));
+
+    &:hover {
+        background-color: $white;
+        color: var(--secondary-color);
+    }
+}
+
+.mainHeader {
+    background-color: #648bc7;
+    color: $white;
+    z-index: -2;
+}
+
+.mainHead {
+    @include flex(space-between);
+    padding: 20px 0;
+}
+
+.mainNav>ul {
+    @include flex;
+    margin: 0;
+
+    li {
+        list-style-type: none;
+
+        a {
+            color: $white;
+            font-weight: 500;
+            font-size: 25px;
+            padding: 10px 20px;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+            z-index: 0;
+
+            &::before {
+                @include psuedo();
+                background-color: transparent;
+                border-top: solid 2px $white;
+                border-bottom: solid 2px $white;
+                transform: scaleY(1.5);
+                opacity: 0;
+                transition: all 0.3s ease-in-out;
+            }
+
+            &::after {
+                @include psuedo();
+                background-color: $white;
+                transform: scale(0);
+                opacity: 0;
+                z-index: -1;
+                transition: all 0.3s ease-in-out;
+            }
+        }
+
+        &:hover {
+            a {
+                color: var(--secondary-color);
+
+                &::before,
+                &::after {
+                    opacity: 1;
+                    transform: scaleY(1);
+                }
+            }
+        }
+    }
+}
+
+.bannerDiv {
+    background-color: var(--primary-color);
+    color: $white;
+
+    .banCont {
+        .btn {
+            background-color: transparent;
+            border-color: $white;
+
+            &:hover {
+                background-color: var(--secondary-color);
+                border-color: var(--secondary-color);
+            }
+
+        }
+
+        .banBtnDiv {
+            display: flex;
+            column-gap: 20px;
+            row-gap: 20px;
+            flex-wrap: wrap;
+        }
+    }
+}
+
+.videoDiv {
+    width: 80%;
+    aspect-ratio: 1/1;
+    margin: auto;
+    position: relative;
+    margin-bottom: 8%;
+}
+
+.videoDiv::before {
+    @include psuedo;
+    opacity: 0.6;
+
+}
+
+.videoDiv::after {
+    content: '';
+    position: absolute;
+    bottom: -8%;
+    left: -8%;
+    width: 50%;
+    height: 50%;
+    background-color: var(--primary-color);
+    display: block;
+    z-index: -1;
+}
+
+.iconFlex {
+    @include flex;
+    column-gap: 15px;
+
+    >* {
+        @include button(50%);
+        min-width: auto;
+        padding: 0;
+        width: 40px;
+        line-height: 36px;
+
+        &:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: $white;
+            transform: scale(1.2);
+        }
+    }
+}
+
+.rating {
+    background-image: url(../images/back1.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.rating::before {
+    @include psuedo;
+    opacity: 0.6;
+}
+
+.bigIco {
+    font-size: 100px;
+    margin-bottom: 30px;
+}
+
+.rateNum {
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.postDiv {
+    width: 90%;
+    margin: auto;
+    box-shadow: 0 0 10px $dark;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    .postCont {
+        padding: 15px;
+    }
+}
+
+.foot {
+    background-color: $dark;
+
+    ul {
+        padding: 0;
+
+        li {
+            list-style-type: none;
+            margin-bottom: 10px;
+
+            a {
+                color: $white;
+                transition: all 0.3s ease-in-out;
+                position: relative;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-image: linear-gradient(to right, var(--secondary-color), var(--secondary-color) 50%, $white 50%);
+                background-size: 200% 100%;
+                background-position: -100%;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: -2px;
+                    left: 0;
+                    width: 0;
+                    height: 2px;
+                    background-color: var(--secondary-color);
+                    transition: all 0.3s ease-in-out;
+                }
+
+                &:hover {
+                    // color: var(--secondary-color);
+                    background-position: 0%;
+
+                    &::before {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.footIcon {
+    @extend .iconFlex;
+    justify-content: end;
+
+    >* {
+        background-color: $white;
+        color: $dark;
+        border-color: $white;
+    }
+}
