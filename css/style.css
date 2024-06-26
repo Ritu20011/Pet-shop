@@ -41,6 +41,12 @@ h1,
 .h1 {
   font-size: 68px;
 }
+@media (max-width: 991px) {
+  h1,
+  .h1 {
+    font-size: 50px;
+  }
+}
 
 h2,
 .h2 {
@@ -48,12 +54,24 @@ h2,
   margin-bottom: 20px;
   font-weight: 700;
 }
+@media (max-width: 991px) {
+  h2,
+  .h2 {
+    font-size: 35px;
+  }
+}
 
 h3,
 .h3 {
   font-size: 40px;
   margin-bottom: 20px;
   font-weight: 700;
+}
+@media (max-width: 991px) {
+  h3,
+  .h3 {
+    font-size: 25px;
+  }
 }
 
 h4,
@@ -100,13 +118,30 @@ form {
 }
 
 input[type=submit] {
+  position: relative;
+  z-index: 1;
+}
+
+.sub {
+  position: relative;
   background-color: var(--secondary-color);
   color: #fff;
   transition: all 0.3s ease-in-out;
 }
-input[type=submit]:hover {
+.sub:hover {
   background-color: #fff;
   color: var(--secondary-color);
+}
+.sub::after {
+  content: "\f002";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  font-size: 25px;
 }
 
 .topForm {
@@ -130,6 +165,11 @@ input[type=submit]:hover {
   max-width: 750px;
   margin-left: auto;
   margin-right: auto;
+}
+@media (max-width: 991px) {
+  .head-para {
+    font-size: 20px;
+  }
 }
 
 .panel {
@@ -202,6 +242,12 @@ input[type=submit]:hover {
   text-transform: capitalize;
   text-align: center;
 }
+@media (max-width: 991px) {
+  .btn {
+    min-width: auto;
+    padding: 10px 15px;
+  }
+}
 .btn:hover {
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
@@ -255,6 +301,12 @@ input[type=submit]:hover {
   transition: all 0.3s ease-in-out;
   position: relative;
   z-index: 0;
+}
+@media (max-width: 1199px) {
+  .mainNav > ul li a {
+    font-size: 20px;
+    padding: 5px 10px;
+  }
 }
 .mainNav > ul li a::before {
   content: "";
