@@ -84,6 +84,7 @@ p {
 h1,
 .h1 {
     font-size: 68px;
+
     @media (max-width: 991px) {
         font-size: 50px;
     }
@@ -94,6 +95,7 @@ h2,
     font-size: 50px;
     margin-bottom: 20px;
     font-weight: 700;
+
     @media (max-width: 991px) {
         font-size: 35px;
     }
@@ -104,6 +106,7 @@ h3,
     font-size: 40px;
     margin-bottom: 20px;
     font-weight: 700;
+
     @media (max-width: 991px) {
         font-size: 25px;
     }
@@ -199,6 +202,7 @@ input[type="submit"] {
     max-width: 750px;
     margin-left: auto;
     margin-right: auto;
+
     @media (max-width: 991px) {
         font-size: 20px;
     }
@@ -269,10 +273,12 @@ input[type="submit"] {
 
 .btn {
     @include button();
+
     @media (max-width: 991px) {
         min-width: auto;
         padding: 10px 15px;
     }
+
     &:hover {
         background-color: var(--secondary-color);
         border-color: var(--secondary-color);
@@ -516,5 +522,82 @@ input[type="submit"] {
         background-color: $white;
         color: $dark;
         border-color: $white;
+    }
+}
+
+.close,
+.toggler {
+    display: none;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    &:hover{
+        background-color: $white;
+        color: var(--secondary-color);
+    }
+}
+
+// responsive
+@media(max-width: 991px) {
+    body{
+        &.active{
+            overflow: hidden;
+        }
+    }
+    .banImg{
+        width: 250px;
+    }
+    .formDiv {
+        @include flex();
+        column-gap: 10px;
+    }
+
+    .mainNav {
+        position: fixed;
+        top: 0;
+        right: -400px;
+        background: var(--secondary-color);
+        z-index: 999;
+        width: 400px;
+        height: 100vh;
+        transition: all 0.3s ease-in-out;
+
+        >ul {
+            display: block;
+            padding: 100px 30px 30px;
+
+            a {
+                display: block;
+                padding: 10px 30px !important;
+            }
+        }
+
+        &.active {
+            right: 0;
+        }
+    }
+
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        padding: 15px;
+        width: 50px;
+        font-size: 30px;
+        height: 50px;
+        text-align: center;
+        @include flex();
+        background-color: #83B4FF;
+    }
+
+    .toggler {
+        display: block;
+        font-size: 30px;
+        padding: 1px 10px;
+        background-color: var(--primary-color);
+    }
+    .topForm{
+        input:not([type='submit']){
+            display: none;
+        }
     }
 }

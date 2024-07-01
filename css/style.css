@@ -517,4 +517,76 @@ input[type=submit] {
   background-color: #fff;
   color: #000000;
   border-color: #fff;
+}
+
+.close,
+.toggler {
+  display: none;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
+.close:hover,
+.toggler:hover {
+  background-color: #fff;
+  color: var(--secondary-color);
+}
+
+@media (max-width: 991px) {
+  body.active {
+    overflow: hidden;
+  }
+  .banImg {
+    width: 250px;
+  }
+  .formDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    -moz-column-gap: 10px;
+         column-gap: 10px;
+  }
+  .mainNav {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    background: var(--secondary-color);
+    z-index: 999;
+    width: 400px;
+    height: 100vh;
+    transition: all 0.3s ease-in-out;
+  }
+  .mainNav > ul {
+    display: block;
+    padding: 100px 30px 30px;
+  }
+  .mainNav > ul a {
+    display: block;
+    padding: 10px 30px !important;
+  }
+  .mainNav.active {
+    right: 0;
+  }
+  .close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    width: 50px;
+    font-size: 30px;
+    height: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #83B4FF;
+  }
+  .toggler {
+    display: block;
+    font-size: 30px;
+    padding: 1px 10px;
+    background-color: var(--primary-color);
+  }
+  .topForm input:not([type=submit]) {
+    display: none;
+  }
 }/*# sourceMappingURL=style.css.map */
